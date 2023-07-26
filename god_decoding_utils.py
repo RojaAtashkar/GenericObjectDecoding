@@ -38,21 +38,11 @@ class data_handler():
         self.dat=dat
         
         self.data = dat.dataset
-        #self.sample_meta = mat['dataset'][:,:3]
-        #meta = mat['metadata']
-
 
         self.meta_keys = list(l for l in dat.metadata.key)
         self.meta_desc = list(l for l in dat.metadata.description )
         
-        
-#         self.data = mat['dataSet'][:,3:]
-#         self.sample_meta = mat['dataSet'][:,:3].astype(np.object_)
-#         meta = mat['metaData']
-        
-        
 
-        # self.voxel_meta = np.nan_to_num(meta[0][0][2][:,3:])
         test_img_df = pd.read_csv(test_img_csv, header=None)
         train_img_df =pd.read_csv(train_img_csv, header=None)
         
@@ -91,8 +81,7 @@ class data_handler():
         img_ids_train = img_ids[train]
         img_ids_test = img_ids[test]
         img_ids_imag = img_ids[imag]
-        
-        #print(img_ids_train)
+
 
         
         img_train_filenames=[self.train_img_df[self.train_img_df[0]==i][1].values for i in img_ids_train]
@@ -101,7 +90,7 @@ class data_handler():
         self.img_train_filenames=[i.squeeze() for i in img_train_filenames]
         self.img_test_filenames=[i.squeeze() for i in img_test_filenames]
         
-        #print(img_train_filenames)
+
 
         train_labels  = []
         test_labels  =  []
