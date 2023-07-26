@@ -137,7 +137,7 @@ def top_5_acc(brain, model, k=5):
     return acc / len(brain)
 
 
-def top_5_nbrs_acc(brain, model, nbrs_model_train=None):
+def top_5_nbrs_acc(brain, nbrs_model_train):
     """This function takes as input two sets of predictions (brain and model).
     It returns the proportion of predictions for which the label with the highest
      count among the top-5 nearest neighbors of the model model's prediction is
@@ -156,6 +156,7 @@ def top_5_nbrs_acc(brain, model, nbrs_model_train=None):
     # Iterate over the predictions for each sample
     for i in range(len(brain)):
         # Get the unique labels and counts of the top-5 nearest neighbors from the model model
+        print(nbrs_model_train)
         values, counts = nbrs_model_train[i].unique(return_counts=True)
         # Find the label with the highest count among the top-5 nearest neighbors
         knn = values[counts.argmax()]
